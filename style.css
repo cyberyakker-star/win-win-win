@@ -183,6 +183,16 @@ button { font-family: inherit; cursor: pointer; }
 }
 .card-slot .dealing { animation: dealIn 0.35s ease-out; }
 
+/* Face-down cards must stay rotated during the deal-in animation, or the
+   animation's transform overrides the flip and exposes the face. No opacity
+   fade here: opacity < 1 flattens preserve-3d and defeats backface-visibility,
+   which would show the face mirrored through the back. */
+@keyframes dealInFaceDown {
+  from { transform: translateY(-60px) scale(0.6) rotateY(180deg); }
+  to   { transform: translateY(0) scale(1) rotateY(180deg); }
+}
+.card-slot .dealing.face-down { animation: dealInFaceDown 0.35s ease-out; }
+
 /* ===================== BET CIRCLES ===================== */
 .bet-circles {
   display: flex;
