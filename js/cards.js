@@ -36,11 +36,14 @@ const Cards = (() => {
   function cardHTML(card) {
     const red = card.suit === "♥" || card.suit === "♦";
     const label = rankLabel(card.rank);
+    // U+FE0E forces text presentation — without it, iOS Safari renders the
+    // suit characters as giant colored emoji that overflow the card layout
+    const suit = card.suit + "︎";
     return `
       <div class="card-face${red ? " red" : ""}">
-        <div class="card-corner">${label}<br>${card.suit}</div>
-        <div class="card-suit-big">${card.suit}</div>
-        <div class="card-corner bottom">${label}<br>${card.suit}</div>
+        <div class="card-corner">${label}<br>${suit}</div>
+        <div class="card-suit-big">${suit}</div>
+        <div class="card-corner bottom">${label}<br>${suit}</div>
       </div>
       <div class="card-back"></div>`;
   }
