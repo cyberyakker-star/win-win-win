@@ -1,9 +1,10 @@
 name: Deploy to GitHub Pages
 
+# Deploys from the repository's default branch. The github-pages
+# environment rejects deployments from other branches.
 on:
   push:
     branches:
-      - main
       - claude/gambling-game-website-hznnw8
   workflow_dispatch:
 
