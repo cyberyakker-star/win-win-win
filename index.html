@@ -3,179 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Win Win Win Casino — Let It Ride</title>
-<link rel="stylesheet" href="style.css">
+<title>Win Win Win Casino — Pick Your Game</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/lobby.css">
 </head>
 <body>
 
 <div class="marquee">
   <div class="bulbs bulbs-top"></div>
   <h1 class="neon-title">WIN&nbsp;·&nbsp;WIN&nbsp;·&nbsp;WIN</h1>
-  <p class="tagline">LET IT RIDE &nbsp;★&nbsp; PLAY-MONEY CASINO &nbsp;★&nbsp; BRIGHT LIGHTS, PUBLISHED ODDS</p>
+  <p class="tagline">PLAY-MONEY CASINO &nbsp;★&nbsp; BRIGHT LIGHTS &nbsp;★&nbsp; PUBLISHED ODDS ON EVERY GAME</p>
   <div class="bulbs bulbs-bottom"></div>
 </div>
 
-<main class="layout">
+<main class="lobby-layout">
 
-  <!-- ===================== TABLE ===================== -->
-  <section class="table-area">
-    <div class="table-felt">
-
-      <div class="community-row">
-        <div class="card-slot" id="community-1"></div>
-        <div class="card-slot" id="community-2"></div>
-        <div class="community-label">COMMUNITY CARDS</div>
-      </div>
-
-      <div class="player-row" id="player-cards">
-        <div class="card-slot" id="player-1"></div>
-        <div class="card-slot" id="player-2"></div>
-        <div class="card-slot" id="player-3"></div>
-      </div>
-
-      <div class="bet-circles">
-        <div class="bet-circle" id="circle-1">
-          <span class="circle-label">1</span>
-          <span class="circle-amount" id="circle-1-amount"></span>
-        </div>
-        <div class="bet-circle" id="circle-2">
-          <span class="circle-label">2</span>
-          <span class="circle-amount" id="circle-2-amount"></span>
-        </div>
-        <div class="bet-circle always-rides" id="circle-3">
-          <span class="circle-label">$</span>
-          <span class="circle-amount" id="circle-3-amount"></span>
-        </div>
-        <div class="bet-circle bonus-circle" id="circle-bonus">
-          <span class="circle-label">★</span>
-          <span class="circle-amount" id="circle-bonus-amount"></span>
-        </div>
-      </div>
-
-      <div class="message-banner" id="message">Place your bet and press DEAL</div>
-
-      <div class="controls">
-        <div class="bet-controls" id="bet-controls">
-          <div class="chip-rack">
-            <button class="chip chip-1" data-unit="1">1</button>
-            <button class="chip chip-5" data-unit="5">5</button>
-            <button class="chip chip-10" data-unit="10">10</button>
-            <button class="chip chip-25" data-unit="25">25</button>
-          </div>
-          <div class="bet-summary">
-            <span>Bet per circle: <strong id="unit-display">5</strong></span>
-            <span>Total: <strong id="total-display">15</strong></span>
-            <label class="bonus-toggle">
-              <input type="checkbox" id="bonus-checkbox">
-              Three Card Bonus (<span id="bonus-amount-display">5</span>)
-            </label>
-          </div>
-          <button class="btn btn-deal" id="deal-btn">DEAL</button>
-        </div>
-
-        <div class="decision-controls hidden" id="decision-controls">
-          <button class="btn btn-pull" id="pull-btn">PULL BACK</button>
-          <button class="btn btn-ride" id="ride-btn">LET IT RIDE</button>
-        </div>
-
-        <div class="next-controls hidden" id="next-controls">
-          <button class="btn btn-deal" id="next-btn">NEXT HAND</button>
-        </div>
-      </div>
-
+  <div class="lobby-balances">
+    <div class="balance-box">
+      <span class="balance-label">YOUR CHIPS</span>
+      <span class="balance-value" id="player-balance"></span>
     </div>
-  </section>
-
-  <!-- ===================== SIDEBAR ===================== -->
-  <aside class="sidebar">
-
-    <div class="panel balances">
-      <div class="balance-box">
-        <span class="balance-label">YOUR CHIPS</span>
-        <span class="balance-value" id="player-balance">500</span>
-      </div>
-      <div class="balance-box house">
-        <span class="balance-label">HOUSE VAULT</span>
-        <span class="balance-value" id="house-balance">250000</span>
-      </div>
-      <div class="table-limits" id="table-limits">Table limits: 1 – 25 per circle</div>
-      <button class="btn btn-small" id="refill-btn">Refill chips (play money)</button>
+    <div class="balance-box house">
+      <span class="balance-label">HOUSE VAULT</span>
+      <span class="balance-value" id="house-balance"></span>
     </div>
-
-    <div class="panel paytable-panel">
-      <h2>LET IT RIDE PAYS <span class="pays-note">(per riding bet, to&nbsp;1)</span></h2>
-      <table class="paytable">
-        <tr><td>Royal Flush</td><td>1000</td></tr>
-        <tr><td>Straight Flush</td><td>200</td></tr>
-        <tr><td>Four of a Kind</td><td>50</td></tr>
-        <tr><td>Full House</td><td>11</td></tr>
-        <tr><td>Flush</td><td>8</td></tr>
-        <tr><td>Straight</td><td>5</td></tr>
-        <tr><td>Three of a Kind</td><td>3</td></tr>
-        <tr><td>Two Pair</td><td>2</td></tr>
-        <tr><td>Pair of 10s or Better</td><td>1</td></tr>
-      </table>
-      <h2>THREE CARD BONUS <span class="pays-note">(to&nbsp;1)</span></h2>
-      <table class="paytable">
-        <tr><td>Mini Royal (A-K-Q suited)</td><td>100</td></tr>
-        <tr><td>Straight Flush</td><td>50</td></tr>
-        <tr><td>Three of a Kind</td><td>30</td></tr>
-        <tr><td>Straight</td><td>6</td></tr>
-        <tr><td>Flush</td><td>3</td></tr>
-        <tr><td>Pair</td><td>1</td></tr>
-      </table>
-      <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
-    </div>
-
-  </aside>
-</main>
-
-<!-- ===================== ODDS MODAL ===================== -->
-<div class="modal-backdrop hidden" id="odds-modal">
-  <div class="modal">
-    <button class="modal-close" id="odds-close">✕</button>
-    <h2>Odds &amp; Return to Player</h2>
-    <p class="rtp-headline">The RTPs listed are based on the optimal strategy for Let It Ride.</p>
-    <div class="rtp-block">
-      <span class="rtp-name">Let It Ride</span>
-      <span class="rtp-value">96.49%</span>
-    </div>
-    <div class="rtp-block">
-      <span class="rtp-name">Three Card Bonus</span>
-      <span class="rtp-value">95.80%</span>
-    </div>
-    <p class="fine-print">
-      Return to Player (RTP) is the long-run share of all wagers paid back as winnings.
-      The house keeps the remainder on average, which is how the vault stays funded for
-      future players. Three Card Bonus RTP here is 95.80% — slightly better than the
-      95.62% found on some commercial versions of this game.
-    </p>
-    <p class="fine-print">
-      The chances of getting a particular outcome are always the same at the start of
-      every game. Cards are dealt from a freshly shuffled 52-card deck each hand using a
-      cryptographically seeded shuffle.
-    </p>
-    <h3>Optimal strategy (used for the RTP above)</h3>
-    <ul class="strategy-list">
-      <li><strong>With 3 cards, let it ride with:</strong> any paying hand (pair of 10s+ or trips);
-        three to a royal flush; three suited cards in a row except A-2-3 and 2-3-4;
-        three to a straight flush spread 4 with at least one card 10 or higher;
-        three to a straight flush spread 5 with at least two cards 10 or higher.</li>
-      <li><strong>With 4 cards, let it ride with:</strong> any paying hand; four to a flush;
-        four to an outside straight with at least one card 10 or higher;
-        four to any straight with four cards 10 or higher.</li>
-      <li>Otherwise, pull the bet back.</li>
-    </ul>
-    <p class="fine-print">
-      This site uses <strong>play money only</strong>. No real money can be deposited,
-      wagered, or won. Malfunctions void all pays and plays. v1.0.3
-    </p>
+    <button class="btn btn-small" id="refill-btn">Refill chips</button>
+    <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
   </div>
-</div>
+
+  <div class="game-grid">
+
+    <a class="game-card" href="letitride.html">
+      <div class="game-preview preview-letitride">
+        <div class="mini-card red">A♥</div>
+        <div class="mini-card">K♠</div>
+        <div class="mini-card back"></div>
+      </div>
+      <div class="game-card-body">
+        <h2>LET IT RIDE</h2>
+        <p>Three bets, two decisions. Pull back or let it ride as the community
+           cards reveal — pair of 10s or better wins.</p>
+        <span class="game-rtp">RTP 96.49%*</span>
+      </div>
+    </a>
+
+    <a class="game-card" href="roulette.html">
+      <div class="game-preview preview-roulette">
+        <div class="mini-wheel"></div>
+      </div>
+      <div class="game-card-body">
+        <h2>ROULETTE</h2>
+        <p>European single-zero wheel. Straight numbers pay 35:1, plus red/black,
+           dozens, columns and more.</p>
+        <span class="game-rtp">RTP 97.30%</span>
+      </div>
+    </a>
+
+    <a class="game-card" href="slots.html">
+      <div class="game-preview preview-slots">
+        <div class="mini-reel">7</div>
+        <div class="mini-reel">🔔</div>
+        <div class="mini-reel">🍒</div>
+      </div>
+      <div class="game-card-body">
+        <h2>SLOTS</h2>
+        <p>Three neon reels, one payline. Triple 7s pay 600× your bet —
+           full paytable published on the machine.</p>
+        <span class="game-rtp">RTP 96.55%</span>
+      </div>
+    </a>
+
+    <a class="game-card" href="blackjack.html">
+      <div class="game-preview preview-blackjack">
+        <div class="mini-card">A♠</div>
+        <div class="mini-card red">J♦</div>
+      </div>
+      <div class="game-card-body">
+        <h2>BLACKJACK</h2>
+        <p>Beat the dealer to 21. Blackjack pays 3:2, dealer stands on all 17s,
+           double and split available.</p>
+        <span class="game-rtp">RTP ≈99.5%*</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="lobby-footer">
+    * strategy-dependent — see the odds disclosure. Play money only: no real money can be
+    deposited, wagered, or won. One chip balance shared across all games; the house vault
+    pays every win and banks every loss.
+  </p>
+
+</main>
 
 <div class="lights-strip left"></div>
 <div class="lights-strip right"></div>
 
-<script src="game.js"></script>
+<script src="js/bank.js"></script>
+<script src="js/odds.js"></script>
+<script>
+  "use strict";
+  Bank.bind({
+    playerEl: document.getElementById("player-balance"),
+    houseEl: document.getElementById("house-balance"),
+  });
+  document.getElementById("refill-btn").addEventListener("click", () => Bank.refill());
+</script>
 </body>
 </html>

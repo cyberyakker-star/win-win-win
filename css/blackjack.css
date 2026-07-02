@@ -1,0 +1,97 @@
+/* Blackjack table styles */
+
+.bj-felt {
+  background: radial-gradient(ellipse at 50% 20%, #16564d, #0a2e29 75%);
+  border: 10px solid #5b3a1e;
+  border-radius: 200px 200px 24px 24px;
+  box-shadow: 0 0 40px #000a, inset 0 0 60px #0007, 0 0 24px #ffd54a33;
+  padding: 28px 22px 24px;
+  text-align: center;
+}
+
+.bj-section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  color: #ffffff88;
+  margin-bottom: 8px;
+}
+
+.bj-cards {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  min-height: 122px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.bj-cards .card-slot { border-style: solid; border-color: #ffffff22; }
+
+.hand-value {
+  display: inline-block;
+  min-width: 34px;
+  padding: 2px 10px;
+  border-radius: 14px;
+  background: #00000055;
+  color: var(--neon-yellow);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+.player-hands {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+
+.bj-hand {
+  padding: 10px 12px 6px;
+  border-radius: 14px;
+  border: 2px solid transparent;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.bj-hand.active {
+  border-color: var(--neon-yellow);
+  box-shadow: 0 0 18px #ffe94a55;
+}
+
+.hand-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 10px;
+  border-radius: 14px;
+  font-size: 0.78rem;
+  font-weight: bold;
+  vertical-align: middle;
+}
+.hand-badge.win  { background: var(--win-green); color: #06331c; }
+.hand-badge.lose { background: var(--lose-red); color: #3a0710; }
+.hand-badge.push { background: #9ecdff; color: #0a2440; }
+.hand-badge.bj   { background: linear-gradient(180deg, var(--gold), #d8a71e); color: #3a2a00; }
+
+.hand-bet {
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin-top: 2px;
+}
+
+.bj-controls { min-height: 110px; margin-top: 14px; }
+
+.action-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.action-row .btn { padding: 12px 26px; }
+
+.bet-summary {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: #ffffffcc;
+}
+.bet-summary strong { color: var(--gold); }

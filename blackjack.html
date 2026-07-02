@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackjack — Win Win Win Casino</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/blackjack.css">
+</head>
+<body>
+
+<div class="marquee">
+  <a class="lobby-link" href="index.html">← LOBBY</a>
+  <div class="bulbs bulbs-top"></div>
+  <h1 class="neon-title">BLACKJACK</h1>
+  <p class="tagline">BLACKJACK PAYS 3:2 &nbsp;★&nbsp; DEALER STANDS ON ALL 17s &nbsp;★&nbsp; RTP ≈99.5% WITH BASIC STRATEGY</p>
+  <div class="bulbs bulbs-bottom"></div>
+</div>
+
+<main class="layout">
+
+  <section class="table-area">
+    <div class="bj-felt">
+
+      <div class="bj-section-label">DEALER</div>
+      <div class="bj-cards" id="dealer-cards"></div>
+      <div class="hand-value" id="dealer-value">&nbsp;</div>
+
+      <div class="bj-section-label">YOUR HAND<span id="hands-plural"></span></div>
+      <div class="player-hands" id="player-hands"></div>
+
+      <div class="message-banner" id="message">Place your bet and press DEAL</div>
+
+      <div class="bj-controls">
+        <div id="bet-controls">
+          <div class="chip-rack">
+            <button class="chip chip-1" data-unit="1">1</button>
+            <button class="chip chip-5" data-unit="5">5</button>
+            <button class="chip chip-10" data-unit="10">10</button>
+            <button class="chip chip-25" data-unit="25">25</button>
+          </div>
+          <div class="bet-summary"><span>Bet: <strong id="bet-display">5</strong></span></div>
+          <button class="btn btn-deal" id="deal-btn">DEAL</button>
+        </div>
+
+        <div class="action-row hidden" id="action-controls">
+          <button class="btn btn-go" id="hit-btn">HIT</button>
+          <button class="btn btn-stop" id="stand-btn">STAND</button>
+          <button class="btn btn-deal" id="double-btn">DOUBLE</button>
+          <button class="btn btn-alt" id="split-btn">SPLIT</button>
+        </div>
+
+        <div class="hidden" id="next-controls">
+          <button class="btn btn-deal" id="next-btn">NEXT HAND</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <aside class="sidebar">
+
+    <div class="panel balances">
+      <div class="balance-box">
+        <span class="balance-label">YOUR CHIPS</span>
+        <span class="balance-value" id="player-balance"></span>
+      </div>
+      <div class="balance-box house">
+        <span class="balance-label">HOUSE VAULT</span>
+        <span class="balance-value" id="house-balance"></span>
+      </div>
+      <div class="table-limits" id="table-limits"></div>
+      <button class="btn btn-small" id="refill-btn">Refill chips (play money)</button>
+    </div>
+
+    <div class="panel paytable-panel">
+      <h2>TABLE RULES <span class="pays-note">(these set the ≈99.5% RTP)</span></h2>
+      <table class="paytable">
+        <tr><td>Blackjack pays</td><td>3 : 2</td></tr>
+        <tr><td>Win / lose</td><td>1 : 1</td></tr>
+        <tr><td>Push</td><td>bet back</td></tr>
+        <tr><td>Decks</td><td>6, reshuffled every round</td></tr>
+        <tr><td>Dealer</td><td>stands on all 17s</td></tr>
+        <tr><td>Double</td><td>any first two cards</td></tr>
+        <tr><td>Split</td><td>once; aces get one card</td></tr>
+        <tr><td>Insurance / surrender</td><td>not offered</td></tr>
+      </table>
+      <p class="fine-print">Return depends on your decisions — ≈99.5% RTP is achievable
+        with basic strategy under these rules; other play styles return less. Blackjack
+        beats a regular 21 and is only possible on your first two cards.</p>
+      <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
+    </div>
+
+  </aside>
+</main>
+
+<div class="lights-strip left"></div>
+<div class="lights-strip right"></div>
+
+<script src="js/bank.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/odds.js"></script>
+<script src="js/blackjack.js"></script>
+</body>
+</html>

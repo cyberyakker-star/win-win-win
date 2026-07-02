@@ -1,0 +1,71 @@
+/* Let It Ride table styles */
+
+.table-felt {
+  background: radial-gradient(ellipse at 50% 30%, var(--felt-light) 0%, var(--felt) 70%);
+  border: 10px solid #5b3a1e;
+  border-radius: 200px 200px 24px 24px;
+  box-shadow: 0 0 40px #000a, inset 0 0 60px #0007, 0 0 24px #ffd54a33;
+  padding: 30px 24px 26px;
+  text-align: center;
+}
+
+/* ===================== BET CIRCLES ===================== */
+.bet-circles {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin: 20px 0 14px;
+}
+
+.bet-circle {
+  width: 72px; height: 72px;
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  background: #00000033;
+  transition: box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
+}
+.bet-circle .circle-label { font-size: 1.15rem; font-weight: bold; }
+.bet-circle .circle-amount { font-size: 0.85rem; min-height: 1em; }
+
+.bet-circle.active { box-shadow: 0 0 16px var(--gold), inset 0 0 12px #ffd54a44; }
+.bet-circle.pulled { opacity: 0.35; border-style: dashed; }
+.bet-circle.won {
+  border-color: var(--win-green);
+  color: var(--win-green);
+  box-shadow: 0 0 22px var(--win-green);
+  animation: winFlash 0.5s ease-in-out 4;
+}
+.bet-circle.lost { opacity: 0.35; border-color: var(--lose-red); color: var(--lose-red); }
+.bonus-circle { border-color: var(--neon-pink); color: var(--neon-pink); }
+.bonus-circle.active { box-shadow: 0 0 16px var(--neon-pink), inset 0 0 12px #ff3d9a44; }
+
+@keyframes winFlash {
+  50% { box-shadow: 0 0 40px var(--win-green), 0 0 80px #45ff9c88; }
+}
+
+/* ===================== CONTROLS ===================== */
+.controls { min-height: 120px; }
+
+.bet-summary {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  color: #ffffffcc;
+}
+.bet-summary strong { color: var(--gold); }
+.bonus-toggle { color: var(--neon-pink); }
+.bonus-toggle input { accent-color: var(--neon-pink); }
+
+.btn-ride { margin-left: 14px; }
+
+@media (max-width: 720px) {
+  .bet-circle { width: 58px; height: 58px; }
+}

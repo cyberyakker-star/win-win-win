@@ -1,4 +1,9 @@
-/* ===================== BASE ===================== */
+/* ============================================================
+   Shared styles for all Win Win Win Casino pages:
+   base, neon marquee, chip rack, buttons, playing cards,
+   sidebar panels, balances, and the odds modal.
+   ============================================================ */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -8,6 +13,8 @@
   --neon-pink: #ff3d9a;
   --neon-cyan: #29e6ff;
   --neon-yellow: #ffe94a;
+  --win-green: #45ff9c;
+  --lose-red: #ff5566;
   --bg: #0a0a1f;
   --panel: #14142e;
 }
@@ -24,6 +31,7 @@ body {
 }
 
 button { font-family: inherit; cursor: pointer; }
+a { color: var(--neon-cyan); }
 .hidden { display: none !important; }
 
 /* ===================== MARQUEE ===================== */
@@ -46,6 +54,7 @@ button { font-family: inherit; cursor: pointer; }
     0 0 80px #ff3d9a88;
   animation: neonPulse 2.2s ease-in-out infinite alternate;
 }
+.neon-title a { color: inherit; text-decoration: none; }
 
 @keyframes neonPulse {
   from { text-shadow: 0 0 6px var(--neon-pink), 0 0 18px var(--neon-pink), 0 0 42px var(--neon-pink), 0 0 80px #ff3d9a88; }
@@ -58,6 +67,20 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.22em;
   font-size: clamp(0.6rem, 1.6vw, 0.85rem);
 }
+
+.lobby-link {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--neon-cyan);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px #29e6ff88;
+  z-index: 6;
+}
+.lobby-link:hover { text-shadow: 0 0 16px var(--neon-cyan); }
 
 /* chasing bulbs */
 .bulbs {
@@ -99,25 +122,17 @@ button { font-family: inherit; cursor: pointer; }
 .table-area { flex: 1 1 620px; }
 .sidebar { flex: 1 1 280px; display: flex; flex-direction: column; gap: 16px; }
 
-/* ===================== TABLE ===================== */
-.table-felt {
-  background: radial-gradient(ellipse at 50% 30%, var(--felt-light) 0%, var(--felt) 70%);
-  border: 10px solid #5b3a1e;
-  border-radius: 200px 200px 24px 24px;
-  box-shadow: 0 0 40px #000a, inset 0 0 60px #0007, 0 0 24px #ffd54a33;
-  padding: 30px 24px 26px;
-  text-align: center;
-}
-
-.community-row, .player-row {
+/* ===================== PLAYING CARDS ===================== */
+.card-row {
   display: flex;
   justify-content: center;
   gap: 14px;
   margin-bottom: 18px;
   position: relative;
+  flex-wrap: wrap;
 }
 
-.community-label {
+.row-label {
   position: absolute;
   bottom: -14px; left: 0; right: 0;
   font-size: 0.6rem;
@@ -132,7 +147,6 @@ button { font-family: inherit; cursor: pointer; }
   perspective: 600px;
 }
 
-/* ===================== CARDS ===================== */
 .card {
   width: 100%; height: 100%;
   border-radius: 9px;
@@ -193,45 +207,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .card-slot .dealing.face-down { animation: dealInFaceDown 0.35s ease-out; }
 
-/* ===================== BET CIRCLES ===================== */
-.bet-circles {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin: 20px 0 14px;
-}
-
-.bet-circle {
-  width: 72px; height: 72px;
-  border: 3px solid var(--gold);
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  background: #00000033;
-  transition: box-shadow 0.3s, opacity 0.3s, border-color 0.3s;
-}
-.bet-circle .circle-label { font-size: 1.15rem; font-weight: bold; }
-.bet-circle .circle-amount { font-size: 0.85rem; min-height: 1em; }
-
-.bet-circle.active { box-shadow: 0 0 16px var(--gold), inset 0 0 12px #ffd54a44; }
-.bet-circle.pulled { opacity: 0.35; border-style: dashed; }
-.bet-circle.won {
-  border-color: #45ff9c;
-  color: #45ff9c;
-  box-shadow: 0 0 22px #45ff9c;
-  animation: winFlash 0.5s ease-in-out 4;
-}
-.bet-circle.lost { opacity: 0.35; border-color: #ff5566; color: #ff5566; }
-.bonus-circle { border-color: var(--neon-pink); color: var(--neon-pink); }
-.bonus-circle.active { box-shadow: 0 0 16px var(--neon-pink), inset 0 0 12px #ff3d9a44; }
-
-@keyframes winFlash {
-  50% { box-shadow: 0 0 40px #45ff9c, 0 0 80px #45ff9c88; }
-}
-
 /* ===================== MESSAGE / CONTROLS ===================== */
 .message-banner {
   min-height: 2.2em;
@@ -239,16 +214,15 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--neon-yellow);
   text-shadow: 0 0 10px #ffe94a66;
   margin-bottom: 12px;
+  text-align: center;
 }
 .message-banner.big-win {
   font-size: 1.45rem;
-  color: #45ff9c;
-  text-shadow: 0 0 14px #45ff9c;
+  color: var(--win-green);
+  text-shadow: 0 0 14px var(--win-green);
   animation: winFlashText 0.5s ease-in-out 6;
 }
 @keyframes winFlashText { 50% { opacity: 0.4; } }
-
-.controls { min-height: 120px; }
 
 .chip-rack { display: flex; justify-content: center; gap: 12px; margin-bottom: 10px; }
 
@@ -271,19 +245,6 @@ button { font-family: inherit; cursor: pointer; }
 .chip-25 { background: #1e8449; }
 .chip:disabled { opacity: 0.35; transform: none; cursor: not-allowed; }
 
-.bet-summary {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  font-size: 0.9rem;
-  margin-bottom: 12px;
-  color: #ffffffcc;
-}
-.bet-summary strong { color: var(--gold); }
-.bonus-toggle { color: var(--neon-pink); }
-.bonus-toggle input { accent-color: var(--neon-pink); }
-
 .btn {
   border: none;
   border-radius: 10px;
@@ -298,8 +259,9 @@ button { font-family: inherit; cursor: pointer; }
 .btn:disabled { opacity: 0.4; transform: none; cursor: not-allowed; }
 
 .btn-deal { background: linear-gradient(180deg, var(--neon-yellow), #e0a800); box-shadow: 0 0 18px #ffe94a66; }
-.btn-ride { background: linear-gradient(180deg, #45ff9c, #17a45c); box-shadow: 0 0 18px #45ff9c55; margin-left: 14px; }
-.btn-pull { background: linear-gradient(180deg, #ff8aa8, #d13355); box-shadow: 0 0 18px #ff5c8455; }
+.btn-go   { background: linear-gradient(180deg, var(--win-green), #17a45c); box-shadow: 0 0 18px #45ff9c55; }
+.btn-stop { background: linear-gradient(180deg, #ff8aa8, #d13355); box-shadow: 0 0 18px #ff5c8455; }
+.btn-alt  { background: linear-gradient(180deg, #9ecdff, #3a7bd5); box-shadow: 0 0 18px #3a7bd555; }
 
 .btn-small {
   background: #26264f;
@@ -364,7 +326,7 @@ button { font-family: inherit; cursor: pointer; }
   background: #10102c;
   border: 2px solid #34346a;
   border-radius: 16px;
-  max-width: 640px;
+  max-width: 680px;
   width: 100%;
   max-height: 88vh;
   overflow-y: auto;
@@ -389,9 +351,21 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .rtp-headline { text-align: center; font-weight: bold; margin-bottom: 14px; }
-.rtp-block { text-align: center; margin-bottom: 10px; }
-.rtp-block .rtp-name { display: block; color: #bdbdf0; }
-.rtp-block .rtp-value { display: block; font-size: 1.5rem; font-weight: bold; color: var(--gold); }
+.rtp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.rtp-block {
+  text-align: center;
+  background: #0c0c22;
+  border-radius: 10px;
+  padding: 10px 6px;
+}
+.rtp-block .rtp-name { display: block; color: #bdbdf0; font-size: 0.85rem; }
+.rtp-block .rtp-value { display: block; font-size: 1.4rem; font-weight: bold; color: var(--gold); }
+.rtp-block .rtp-note { display: block; font-size: 0.66rem; color: #9a9ac8; }
 
 .fine-print { font-size: 0.8rem; color: #a9a9d6; margin: 10px 0; line-height: 1.5; }
 .strategy-list { font-size: 0.82rem; color: #c9c9ee; padding-left: 20px; line-height: 1.55; }
@@ -403,6 +377,6 @@ button { font-family: inherit; cursor: pointer; }
   .card-slot { width: 60px; height: 86px; }
   .card-suit-big { font-size: 1.8rem; }
   .card-corner { font-size: 0.9rem; }
-  .bet-circle { width: 58px; height: 58px; }
   .lights-strip { width: 8px; background-size: 8px 22px; }
+  .lobby-link { position: static; display: inline-block; transform: none; margin-bottom: 4px; }
 }

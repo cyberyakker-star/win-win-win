@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Slots — Win Win Win Casino</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/slots.css">
+</head>
+<body>
+
+<div class="marquee">
+  <a class="lobby-link" href="index.html">← LOBBY</a>
+  <div class="bulbs bulbs-top"></div>
+  <h1 class="neon-title">SLOTS</h1>
+  <p class="tagline">TRIPLE 7s PAY 600× &nbsp;★&nbsp; RTP 96.55% — EXACT, COMPUTED FROM THE REELS</p>
+  <div class="bulbs bulbs-bottom"></div>
+</div>
+
+<main class="layout">
+
+  <section class="table-area">
+    <div class="slot-cabinet">
+      <div class="slot-header">★ LUCKY TRIPLE ★</div>
+
+      <div class="reels" id="reels">
+        <div class="reel-window"><div class="reel-strip" id="reel-0"></div></div>
+        <div class="reel-window"><div class="reel-strip" id="reel-1"></div></div>
+        <div class="reel-window"><div class="reel-strip" id="reel-2"></div></div>
+        <div class="payline"></div>
+      </div>
+
+      <div class="message-banner" id="message">Pick your bet and pull the lever!</div>
+
+      <div class="slot-controls">
+        <div class="chip-rack">
+          <button class="chip chip-1" data-unit="1">1</button>
+          <button class="chip chip-5" data-unit="5">5</button>
+          <button class="chip chip-10" data-unit="10">10</button>
+          <button class="chip chip-25" data-unit="25">25</button>
+        </div>
+        <div class="bet-display">Bet: <strong id="bet-display">5</strong></div>
+        <button class="btn btn-go btn-spin-slots" id="spin-btn">SPIN</button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="sidebar">
+
+    <div class="panel balances">
+      <div class="balance-box">
+        <span class="balance-label">YOUR CHIPS</span>
+        <span class="balance-value" id="player-balance"></span>
+      </div>
+      <div class="balance-box house">
+        <span class="balance-label">HOUSE VAULT</span>
+        <span class="balance-value" id="house-balance"></span>
+      </div>
+      <div class="table-limits" id="table-limits"></div>
+      <button class="btn btn-small" id="refill-btn">Refill chips (play money)</button>
+    </div>
+
+    <div class="panel paytable-panel">
+      <h2>PAYTABLE <span class="pays-note">(×bet, total returned — payline only)</span></h2>
+      <table class="paytable">
+        <tr><td>7 &nbsp;7 &nbsp;7</td><td>600</td></tr>
+        <tr><td>DOUBLE BAR ×3</td><td>60</td></tr>
+        <tr><td>BAR ×3</td><td>25</td></tr>
+        <tr><td>Bell ×3</td><td>15</td></tr>
+        <tr><td>Any mix of BARs</td><td>10</td></tr>
+        <tr><td>Cherry ×3</td><td>10</td></tr>
+        <tr><td>Any 2 cherries</td><td>4</td></tr>
+        <tr><td>Any 1 cherry</td><td>1 (money back)</td></tr>
+      </table>
+      <p class="fine-print">Three 20-stop reels; every stop is equally likely, drawn from
+        a cryptographic RNG. The 96.55% RTP is the exact average over all 8,000 possible
+        reel combinations — the reel strips are fixed and every spin is independent.</p>
+      <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
+    </div>
+
+  </aside>
+</main>
+
+<div class="lights-strip left"></div>
+<div class="lights-strip right"></div>
+
+<script src="js/bank.js"></script>
+<script src="js/odds.js"></script>
+<script src="js/slots.js"></script>
+</body>
+</html>

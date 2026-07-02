@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let It Ride — Win Win Win Casino</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/letitride.css">
+</head>
+<body>
+
+<div class="marquee">
+  <a class="lobby-link" href="index.html">← LOBBY</a>
+  <div class="bulbs bulbs-top"></div>
+  <h1 class="neon-title">LET&nbsp;IT&nbsp;RIDE</h1>
+  <p class="tagline">PAIR OF 10s OR BETTER WINS &nbsp;★&nbsp; RTP 96.49% WITH OPTIMAL STRATEGY</p>
+  <div class="bulbs bulbs-bottom"></div>
+</div>
+
+<main class="layout">
+
+  <!-- ===================== TABLE ===================== -->
+  <section class="table-area">
+    <div class="table-felt">
+
+      <div class="card-row">
+        <div class="card-slot" id="community-1"></div>
+        <div class="card-slot" id="community-2"></div>
+        <div class="row-label">COMMUNITY CARDS</div>
+      </div>
+
+      <div class="card-row" id="player-cards">
+        <div class="card-slot" id="player-1"></div>
+        <div class="card-slot" id="player-2"></div>
+        <div class="card-slot" id="player-3"></div>
+      </div>
+
+      <div class="bet-circles">
+        <div class="bet-circle" id="circle-1">
+          <span class="circle-label">1</span>
+          <span class="circle-amount" id="circle-1-amount"></span>
+        </div>
+        <div class="bet-circle" id="circle-2">
+          <span class="circle-label">2</span>
+          <span class="circle-amount" id="circle-2-amount"></span>
+        </div>
+        <div class="bet-circle always-rides" id="circle-3">
+          <span class="circle-label">$</span>
+          <span class="circle-amount" id="circle-3-amount"></span>
+        </div>
+        <div class="bet-circle bonus-circle" id="circle-bonus">
+          <span class="circle-label">★</span>
+          <span class="circle-amount" id="circle-bonus-amount"></span>
+        </div>
+      </div>
+
+      <div class="message-banner" id="message">Place your bet and press DEAL</div>
+
+      <div class="controls">
+        <div class="bet-controls" id="bet-controls">
+          <div class="chip-rack">
+            <button class="chip chip-1" data-unit="1">1</button>
+            <button class="chip chip-5" data-unit="5">5</button>
+            <button class="chip chip-10" data-unit="10">10</button>
+            <button class="chip chip-25" data-unit="25">25</button>
+          </div>
+          <div class="bet-summary">
+            <span>Bet per circle: <strong id="unit-display">5</strong></span>
+            <span>Total: <strong id="total-display">15</strong></span>
+            <label class="bonus-toggle">
+              <input type="checkbox" id="bonus-checkbox">
+              Three Card Bonus (<span id="bonus-amount-display">5</span>)
+            </label>
+          </div>
+          <button class="btn btn-deal" id="deal-btn">DEAL</button>
+        </div>
+
+        <div class="decision-controls hidden" id="decision-controls">
+          <button class="btn btn-stop" id="pull-btn">PULL BACK</button>
+          <button class="btn btn-go btn-ride" id="ride-btn">LET IT RIDE</button>
+        </div>
+
+        <div class="next-controls hidden" id="next-controls">
+          <button class="btn btn-deal" id="next-btn">NEXT HAND</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+
+    <div class="panel balances">
+      <div class="balance-box">
+        <span class="balance-label">YOUR CHIPS</span>
+        <span class="balance-value" id="player-balance"></span>
+      </div>
+      <div class="balance-box house">
+        <span class="balance-label">HOUSE VAULT</span>
+        <span class="balance-value" id="house-balance"></span>
+      </div>
+      <div class="table-limits" id="table-limits"></div>
+      <button class="btn btn-small" id="refill-btn">Refill chips (play money)</button>
+    </div>
+
+    <div class="panel paytable-panel">
+      <h2>LET IT RIDE PAYS <span class="pays-note">(per riding bet, to&nbsp;1)</span></h2>
+      <table class="paytable">
+        <tr><td>Royal Flush</td><td>1000</td></tr>
+        <tr><td>Straight Flush</td><td>200</td></tr>
+        <tr><td>Four of a Kind</td><td>50</td></tr>
+        <tr><td>Full House</td><td>11</td></tr>
+        <tr><td>Flush</td><td>8</td></tr>
+        <tr><td>Straight</td><td>5</td></tr>
+        <tr><td>Three of a Kind</td><td>3</td></tr>
+        <tr><td>Two Pair</td><td>2</td></tr>
+        <tr><td>Pair of 10s or Better</td><td>1</td></tr>
+      </table>
+      <h2>THREE CARD BONUS <span class="pays-note">(to&nbsp;1)</span></h2>
+      <table class="paytable">
+        <tr><td>Mini Royal (A-K-Q suited)</td><td>100</td></tr>
+        <tr><td>Straight Flush</td><td>50</td></tr>
+        <tr><td>Three of a Kind</td><td>30</td></tr>
+        <tr><td>Straight</td><td>6</td></tr>
+        <tr><td>Flush</td><td>3</td></tr>
+        <tr><td>Pair</td><td>1</td></tr>
+      </table>
+      <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
+    </div>
+
+    <div class="panel paytable-panel">
+      <h2>OPTIMAL STRATEGY <span class="pays-note">(basis of the 96.49% RTP)</span></h2>
+      <ul class="strategy-list">
+        <li><strong>3 cards — ride with:</strong> any paying hand; three to a royal;
+          three suited in a row (not A-2-3 / 2-3-4); straight-flush draw spread 4 with a
+          10+; spread 5 with two 10+.</li>
+        <li><strong>4 cards — ride with:</strong> any paying hand; four to a flush;
+          four to an outside straight with a 10+; any four-card straight with four 10+.</li>
+        <li>Otherwise, pull the bet back.</li>
+      </ul>
+    </div>
+
+  </aside>
+</main>
+
+<div class="lights-strip left"></div>
+<div class="lights-strip right"></div>
+
+<script src="js/bank.js"></script>
+<script src="js/cards.js"></script>
+<script src="js/odds.js"></script>
+<script src="js/letitride.js"></script>
+</body>
+</html>

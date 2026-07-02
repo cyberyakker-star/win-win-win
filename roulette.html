@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roulette — Win Win Win Casino</title>
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/roulette.css">
+</head>
+<body>
+
+<div class="marquee">
+  <a class="lobby-link" href="index.html">← LOBBY</a>
+  <div class="bulbs bulbs-top"></div>
+  <h1 class="neon-title">ROULETTE</h1>
+  <p class="tagline">EUROPEAN SINGLE ZERO &nbsp;★&nbsp; RTP 97.30% ON EVERY BET</p>
+  <div class="bulbs bulbs-bottom"></div>
+</div>
+
+<main class="layout">
+
+  <section class="table-area">
+    <div class="roulette-felt">
+
+      <div class="wheel-area">
+        <div class="wheel" id="wheel">
+          <div class="wheel-hub" id="wheel-hub">?</div>
+        </div>
+        <div>
+          <div class="message-banner" id="message">Pick a chip, click the board to bet, then SPIN</div>
+          <div class="history-strip" id="history"></div>
+        </div>
+      </div>
+
+      <div class="board-scroll">
+        <div class="board" id="board"></div>
+      </div>
+
+      <div class="roulette-controls">
+        <div class="chip-rack">
+          <button class="chip chip-1" data-unit="1">1</button>
+          <button class="chip chip-5" data-unit="5">5</button>
+          <button class="chip chip-10" data-unit="10">10</button>
+          <button class="chip chip-25" data-unit="25">25</button>
+        </div>
+        <div class="total-bet-display">On the table: <strong id="total-bet">0</strong></div>
+        <button class="btn btn-alt" id="remove-btn">REMOVE CHIPS</button>
+        <button class="btn btn-stop" id="clear-btn">CLEAR</button>
+        <button class="btn btn-go" id="spin-btn">SPIN</button>
+      </div>
+
+    </div>
+  </section>
+
+  <aside class="sidebar">
+
+    <div class="panel balances">
+      <div class="balance-box">
+        <span class="balance-label">YOUR CHIPS</span>
+        <span class="balance-value" id="player-balance"></span>
+      </div>
+      <div class="balance-box house">
+        <span class="balance-label">HOUSE VAULT</span>
+        <span class="balance-value" id="house-balance"></span>
+      </div>
+      <div class="table-limits" id="table-limits"></div>
+      <button class="btn btn-small" id="refill-btn">Refill chips (play money)</button>
+    </div>
+
+    <div class="panel paytable-panel">
+      <h2>ROULETTE PAYS <span class="pays-note">(to&nbsp;1)</span></h2>
+      <table class="paytable">
+        <tr><td>Straight up (one number)</td><td>35</td></tr>
+        <tr><td>Dozen (1st / 2nd / 3rd 12)</td><td>2</td></tr>
+        <tr><td>Column (2 to 1)</td><td>2</td></tr>
+        <tr><td>Red / Black</td><td>1</td></tr>
+        <tr><td>Odd / Even</td><td>1</td></tr>
+        <tr><td>1–18 / 19–36</td><td>1</td></tr>
+      </table>
+      <p class="fine-print">Single-zero wheel: every bet returns 36/37 of wagers on
+        average — RTP 97.30%, house edge 2.70%. Zero loses all outside bets
+        (no la partage). Toggle REMOVE CHIPS to take chips back off the board.</p>
+      <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
+    </div>
+
+  </aside>
+</main>
+
+<div class="lights-strip left"></div>
+<div class="lights-strip right"></div>
+
+<script src="js/bank.js"></script>
+<script src="js/odds.js"></script>
+<script src="js/roulette.js"></script>
+</body>
+</html>

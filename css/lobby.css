@@ -1,0 +1,142 @@
+/* Lobby (main screen) styles */
+
+.lobby-layout {
+  max-width: 1100px;
+  margin: 26px auto;
+  padding: 0 30px;
+}
+
+.lobby-balances {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.lobby-balances .balance-box {
+  min-width: 220px;
+  margin-bottom: 0;
+  gap: 14px;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.game-card {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  background: var(--panel);
+  border: 1px solid #2c2c5c;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px #0007;
+  transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+}
+.game-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: var(--neon-yellow);
+  box-shadow: 0 0 26px #ffe94a55, 0 10px 24px #000a;
+}
+
+.game-preview {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 2.6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-letitride { background: radial-gradient(ellipse at 50% 20%, var(--felt-light), var(--felt)); }
+.preview-roulette  { background: radial-gradient(ellipse at 50% 20%, #3a1220, #1c0910); }
+.preview-slots     { background: radial-gradient(ellipse at 50% 20%, #2a1d4d, #140e28); }
+.preview-blackjack { background: radial-gradient(ellipse at 50% 20%, #123a35, #091c1a); }
+
+/* mini card art */
+.mini-card {
+  width: 44px; height: 62px;
+  background: #fdfdf6;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px #0009;
+  color: #111;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(-6deg);
+}
+.mini-card.red { color: #cf1830; }
+.mini-card:nth-child(2) { transform: rotate(3deg) translateY(-4px); }
+.mini-card.back {
+  background: repeating-linear-gradient(45deg, #1741a8 0 6px, #1d4fc4 6px 12px);
+  border: 3px solid #fdfdf6;
+  transform: rotate(9deg);
+}
+
+/* mini roulette wheel */
+.mini-wheel {
+  width: 92px; height: 92px;
+  border-radius: 50%;
+  border: 6px solid #5b3a1e;
+  background: repeating-conic-gradient(#b3122e 0 20deg, #17171c 20deg 40deg);
+  position: relative;
+  animation: wheelSpinSlow 9s linear infinite;
+}
+.mini-wheel::after {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border-radius: 50%;
+  background: #d8b558;
+}
+@keyframes wheelSpinSlow { to { transform: rotate(360deg); } }
+
+/* mini slot reels */
+.mini-reel {
+  width: 40px; height: 66px;
+  background: #fdfdf6;
+  border-radius: 6px;
+  border: 3px solid #b8962e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: inset 0 6px 8px #0004, inset 0 -6px 8px #0004;
+}
+
+.game-card-body { padding: 14px 16px 16px; }
+.game-card-body h2 {
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 10px #ffe94a44;
+}
+.game-card-body p { font-size: 0.8rem; color: #b9b9e0; line-height: 1.45; min-height: 3.6em; }
+
+.game-rtp {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  color: #0a0a1f;
+  background: linear-gradient(180deg, var(--gold), #d8a71e);
+}
+
+.lobby-footer {
+  text-align: center;
+  margin: 26px 0 14px;
+  font-size: 0.78rem;
+  color: #9a9ac8;
+}
