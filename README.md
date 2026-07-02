@@ -22,7 +22,7 @@ All odds are published in-game: each game shows its paytable/rules, and a shared
 
 ## The house never goes broke
 
-- The **house vault** (seeded with 250,000 play chips) persists in `localStorage`
+- The **house vault** (seeded with 1,000,000 play chips) persists in `localStorage`
   and settles every bet across all games: losing wagers flow in, winning payouts
   flow out. Chips are exactly conserved.
 - Each game caps bets so its worst possible payout can never exceed the vault
@@ -35,8 +35,9 @@ All odds are published in-game: each game shows its paytable/rules, and a shared
 
 ## Play money only
 
-No real money can be deposited, wagered, or won. Players start with 500 chips and
-can refill for free. (Operating this with real money would require gambling
+No real money can be deposited, wagered, or won. Players start with 2,500 chips and
+can refill for free. Chips run 1–100; in Let It Ride the Three Card Bonus is an
+independent side bet (0–100) on top of the three equal main bets. (Operating this with real money would require gambling
 licensing — this project is entertainment/demo only.)
 
 ## Structure

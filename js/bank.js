@@ -16,10 +16,10 @@
 
 const Bank = (() => {
   const KEYS = { player: "www_player_chips", house: "www_house_vault" };
-  const PLAYER_SEED = 500;
-  const HOUSE_SEED = 250000;
+  const PLAYER_SEED = 2500;
+  const HOUSE_SEED = 1000000;
   const TABLE_MIN = 1;
-  const TABLE_MAX = 25;
+  const TABLE_MAX = 100;
 
   function load(key, fallback) {
     const raw = localStorage.getItem(key);
@@ -29,6 +29,11 @@ const Bank = (() => {
 
   let player = load(KEYS.player, PLAYER_SEED);
   let house = load(KEYS.house, HOUSE_SEED);
+  /* One-time migration: vaults saved before the 100-chip update were seeded
+     at 250k, too small to cover 100-chip Let It Ride (worst case 310k). A
+     healthy new-economy vault never drops near that, so anything below 500k
+     is old and gets re-capitalized once. */
+  if (house < 500000) house = HOUSE_SEED;
 
   function save() {
     localStorage.setItem(KEYS.player, String(player));

@@ -72,7 +72,7 @@
     </p>
     <p class="fine-print">
       This site uses <strong>play money only</strong>. No real money can be deposited,
-      wagered, or won. Malfunctions void all pays and plays. v1.1.0
+      wagered, or won. Malfunctions void all pays and plays. v1.1.1
     </p>
   </div>
 </div>`;

@@ -239,10 +239,16 @@ a { color: var(--neon-cyan); }
 }
 .chip:hover { transform: translateY(-4px) scale(1.07); }
 .chip.selected { outline: 3px solid var(--neon-yellow); outline-offset: 3px; }
-.chip-1  { background: #7d8796; }
-.chip-5  { background: #c0392b; }
-.chip-10 { background: #2471a3; }
-.chip-25 { background: #1e8449; }
+.chip-1   { background: #7d8796; }
+.chip-5   { background: #c0392b; }
+.chip-10  { background: #2471a3; }
+.chip-25  { background: #1e8449; }
+.chip-100 {
+  background: radial-gradient(circle at 35% 30%, #3d2a6e, #17102e);
+  border-color: var(--gold);
+  color: var(--gold);
+  font-size: 0.88rem;
+}
 .chip:disabled { opacity: 0.35; transform: none; cursor: not-allowed; }
 
 .btn {

@@ -8,16 +8,17 @@
 
 "use strict";
 
-/* Worst-case exposure per unit bet: 3 riding circles hitting a royal
-   (1000:1) plus a mini-royal bonus (100:1). */
+/* Worst-case exposure per unit bet for chip-rack limits: 3 riding circles
+   hitting a royal (1000:1) plus a mini-royal bonus (100:1). deal() also
+   checks the actual worst case for the chosen bets against the vault. */
 const EXPOSURE_PER_UNIT = 3 * 1000 + 100;
+const BONUS_MAX = 100;
 
 let unit = 5;
-let bonusOn = false;
+let bonusBet = 0; // independent side bet, 0–BONUS_MAX, persists between hands
 let playerCards = [];
 let communityCards = [];
 let circlesRiding = [true, true, true];
-let bonusBet = 0;
 let phase = "betting"; // betting | decision1 | decision2 | settled
 
 const $ = (id) => document.getElementById(id);
@@ -26,7 +27,8 @@ const els = {
   unitDisplay: $("unit-display"),
   totalDisplay: $("total-display"),
   bonusAmountDisplay: $("bonus-amount-display"),
-  bonusCheckbox: $("bonus-checkbox"),
+  bonusMinus: $("bonus-minus"),
+  bonusPlus: $("bonus-plus"),
   dealBtn: $("deal-btn"),
   pullBtn: $("pull-btn"),
   rideBtn: $("ride-btn"),
@@ -55,8 +57,8 @@ Bank.bind({
 
 function renderBetSummary() {
   els.unitDisplay.textContent = unit;
-  els.totalDisplay.textContent = unit * 3 + (bonusOn ? unit : 0);
-  els.bonusAmountDisplay.textContent = unit;
+  els.totalDisplay.textContent = unit * 3 + bonusBet;
+  els.bonusAmountDisplay.textContent = bonusBet;
   const max = Bank.maxUnit(EXPOSURE_PER_UNIT);
   document.querySelectorAll(".chip").forEach((chip) => {
     chip.classList.toggle("selected", Number(chip.dataset.unit) === unit);
@@ -94,13 +96,17 @@ function deal() {
     setMessage(`Table max is ${max} right now — pick a smaller chip.`);
     return;
   }
-  const total = unit * 3 + (bonusOn ? unit : 0);
+  // worst case for THIS hand: triple royal on the mains + mini royal on the bonus
+  if (unit * 3000 + bonusBet * 100 > Bank.house()) {
+    setMessage("That combination exceeds what the vault can pay — lower a bet.");
+    return;
+  }
+  const total = unit * 3 + bonusBet;
   if (!Bank.take(total)) {
     setMessage("Not enough chips — lower your bet or refill.");
     return;
   }
 
-  bonusBet = bonusOn ? unit : 0;
   const deck = Cards.newShuffledDeck();
   playerCards = [deck.pop(), deck.pop(), deck.pop()];
   communityCards = [deck.pop(), deck.pop()];
@@ -210,8 +216,13 @@ document.querySelectorAll(".chip").forEach((chip) => {
   });
 });
 
-els.bonusCheckbox.addEventListener("change", () => {
-  bonusOn = els.bonusCheckbox.checked;
+/* Bonus stepper: +/− steps by the selected chip, clamped to 0–BONUS_MAX. */
+els.bonusPlus.addEventListener("click", () => {
+  bonusBet = Math.min(BONUS_MAX, bonusBet + unit);
+  renderBetSummary();
+});
+els.bonusMinus.addEventListener("click", () => {
+  bonusBet = Math.max(0, bonusBet - unit);
   renderBetSummary();
 });
 

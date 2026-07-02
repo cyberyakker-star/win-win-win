@@ -63,14 +63,16 @@
             <button class="chip chip-5" data-unit="5">5</button>
             <button class="chip chip-10" data-unit="10">10</button>
             <button class="chip chip-25" data-unit="25">25</button>
+            <button class="chip chip-100" data-unit="100">100</button>
           </div>
           <div class="bet-summary">
             <span>Bet per circle: <strong id="unit-display">5</strong></span>
+            <span class="bonus-stepper">Three Card Bonus:
+              <button class="stepper-btn" id="bonus-minus">−</button>
+              <strong id="bonus-amount-display">0</strong>
+              <button class="stepper-btn" id="bonus-plus">+</button>
+            </span>
             <span>Total: <strong id="total-display">15</strong></span>
-            <label class="bonus-toggle">
-              <input type="checkbox" id="bonus-checkbox">
-              Three Card Bonus (<span id="bonus-amount-display">5</span>)
-            </label>
           </div>
           <button class="btn btn-deal" id="deal-btn">DEAL</button>
         </div>
@@ -126,6 +128,9 @@
         <tr><td>Flush</td><td>3</td></tr>
         <tr><td>Pair</td><td>1</td></tr>
       </table>
+      <p class="fine-print">The Three Card Bonus is its own bet — any amount from 0 to
+        100, independent of your three main bets, sized with the +/− stepper using the
+        selected chip. It wins or loses on your first three cards every hand.</p>
       <button class="btn btn-small" id="odds-btn">Odds &amp; RTP disclosure</button>
     </div>
 

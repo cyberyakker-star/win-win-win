@@ -61,8 +61,21 @@
   color: #ffffffcc;
 }
 .bet-summary strong { color: var(--gold); }
-.bonus-toggle { color: var(--neon-pink); }
-.bonus-toggle input { accent-color: var(--neon-pink); }
+
+.bonus-stepper { color: var(--neon-pink); }
+.bonus-stepper strong { color: var(--neon-pink); min-width: 2.2em; display: inline-block; text-align: center; }
+.stepper-btn {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--neon-pink);
+  background: #00000044;
+  color: var(--neon-pink);
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+  vertical-align: middle;
+}
+.stepper-btn:hover { background: #ff3d9a33; }
 
 .btn-ride { margin-left: 14px; }
 
